@@ -1,0 +1,32 @@
+{% extends "download/base.html" %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Конвертировать видео в аудио</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.youtube_url.label_tag }}
+                                {{ form.youtube_url }}
+                                {% if form.youtube_url.errors %}
+                                    <div class="alert alert-danger mt-2">
+                                        {{ form.youtube_url.errors }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-primary">Скачать</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
