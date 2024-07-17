@@ -1,32 +1,45 @@
 {% extends "download/base.html" %}
-
 {% block content %}
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="text-center">Конвертировать видео в аудио</h2>
-                    </div>
-                    <div class="card-body">
-                        <form method="post">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                {{ form.youtube_url.label_tag }}
-                                {{ form.youtube_url }}
-                                {% if form.youtube_url.errors %}
-                                    <div class="alert alert-danger mt-2">
-                                        {{ form.youtube_url.errors }}
-                                    </div>
-                                {% endif %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Конвертировать видео в аудио</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" id="download-form">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.youtube_url.label_tag }}
+                            {{ form.youtube_url }}
+                            {% if form.youtube_url.errors %}
+                            <div class="alert alert-danger mt-2">
+                                {{ form.youtube_url.errors }}
                             </div>
-                            <div class="text-center mt-3">
-                                <button type="submit" class="btn btn-primary">Скачать</button>
-                            </div>
-                        </form>
+                            {% endif %}
+                        </div>
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-primary" id="download-btn">Скачать</button>
+                        </div>
+                    </form>
+                    <div id="loading" style="display: none;" class="text-center mt-3">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Загрузка...</span>
+                        </div>
+                        <p class="mt-2">Пожалуйста, подождите. Идет обработка видео...</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<script>
+document.getElementById('download-form').onsubmit = function() {
+    document.getElementById('download-btn').style.display = 'none';
+    document.getElementById('loading').style.display = 'block';
+    return true;
+};
+</script>
 {% endblock %}

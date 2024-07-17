@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from download.models import AudioTrack
+
+
+@admin.register(AudioTrack)
+class AudioTrackAdmin(admin.ModelAdmin):
+    pass
+

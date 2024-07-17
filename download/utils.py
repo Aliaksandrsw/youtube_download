@@ -5,7 +5,6 @@ import os
 
 
 def download_audio(youtube_url):
-
     existing_audio = AudioTrack.objects.filter(youtube_url=youtube_url).first()
     if existing_audio:
         return existing_audio
@@ -26,16 +25,16 @@ def download_audio(youtube_url):
         base, ext = os.path.splitext(filename)
         new_filename = f"{base}.mp3"
 
-    with open(new_filename, 'rb') as f:
-        audio_content = f.read()
+        with open(new_filename, 'rb') as f:
+            audio_content = f.read()
 
-    audio_track = AudioTrack(
-        title=info['title'],
-        youtube_url=youtube_url
-    )
-    audio_track.audio_file.save(new_filename, ContentFile(audio_content))
-    audio_track.save()
+        audio_track = AudioTrack(
+            title=info['title'],
+            youtube_url=youtube_url
+        )
+        audio_track.audio_file.save(new_filename, ContentFile(audio_content))
+        audio_track.save()
 
-    os.remove(new_filename)  # Удаляем временный файл
+        os.remove(new_filename)  # Удаляем временный файл
 
     return audio_track
