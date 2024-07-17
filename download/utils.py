@@ -35,6 +35,6 @@ def download_audio(youtube_url):
         audio_track.audio_file.save(new_filename, ContentFile(audio_content))
         audio_track.save()
 
-        os.remove(new_filename)  # Удаляем временный файл
+        os.remove(new_filename)
 
     return audio_track
