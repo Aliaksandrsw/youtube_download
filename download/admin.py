@@ -7,7 +7,7 @@ from download.models import AudioTrack, VideoLoad
 class AudioTrackAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(VideoLoad)
 class VideoLoadAdmin(admin.ModelAdmin):
     pass
-
