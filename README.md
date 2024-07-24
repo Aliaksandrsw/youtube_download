@@ -48,11 +48,11 @@ brew install ffmpeg
 2. Скопируйте файл `.env.example` и переименуйте его в `.env`:
 3. Отредактируйте файл `.env`, заполнив его своими данными:
 SECRET_KEY=ваш_секретный_ключ
-DATABASE_ENGINE=django.db.backends.{ваша СУБД}
-DATABASE_NAME=имя базы данных
-DATABASE_USER=юзер
-DATABASE_PASSWORD=ваш пароль
-DATABASE_HOST=ваш db хост
-DATABASE_PORT=ваш db порт
+#### DATABASE_ENGINE=django.db.backends.{ваша СУБД}
+#### DATABASE_NAME=имя базы данных
+#### DATABASE_USER=юзер
+#### DATABASE_PASSWORD=ваш пароль
+#### DATABASE_HOST=ваш db хост
+#### DATABASE_PORT=ваш db порт
 4. Запустите приложение с помощью Docker Compose: docker-compose up --build
 5. Откройте браузер и перейдите по адресу `http://localhost:8000` (или другой порт, если вы изменили его в Docker Compose).
